@@ -1,8 +1,21 @@
-# A place to put your production hosts
-# Examples:
-# 
-# [webservers]
-# localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python2.7 
-#
-# [clusters]
-# beowolf.example.com ansible_ssh_user=root
+# A place of our production hosts
+[elk-master-nodes]
+elk-master01
+elk-master02
+elk-master03
+
+[elk-data-nodes]
+elk-data01
+elk-data02
+elk-data03
+
+[kibana]
+kibana01
+kibana02
+
+[nginx]
+nginx01
+
+[logstash]
+logstash01
+logstash02
