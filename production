@@ -1,21 +1,21 @@
 # A place of our production hosts
-[elk-master-nodes]
-elk-master01
-elk-master02
-elk-master03
+[elk_master_nodes]
+elk_master01 ansible_host=10.26.2.32
+elk_master02 ansible_host=10.26.3.248
+elk_master03 ansible_host=10.26.2.31
 
-[elk-data-nodes]
-elk-data01
-elk-data02
-elk-data03
+[elk_data_nodes]
+elk_data01 ansible_host=10.26.2.30
+elk_data02 ansible_host=10.26.2.29
+elk_data03 ansible_host=10.26.2.28
 
 [kibana]
-kibana01
-kibana02
+kibana01 ansible_host=10.26.2.22
+kibana02 ansible_host=10.26.2.21
 
 [nginx]
-nginx01
+nginx01 ansible_host=10.26.2.23
 
 [logstash]
-logstash01
-logstash02
+logstash01 ansible_host=10.26.2.20
+logstash02 ansible_host=10.26.2.19
