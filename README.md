@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # About This Repo #
 This is a skeleton of an Ansible home directory. You can control all of your application environments from this directory. If you work with multiple customers, you probably want to create a separate copy of this repo for each customer.
 
@@ -58,3 +59,7 @@ roles/
     fooapp/               # ""
 </pre>
 
+=======
+# lv-517-ansible
+Ansible task to deploy and monitor lv-517.DevOps infractructure
+>>>>>>> 1cfabee64d0242fe2f27dd1bfc5db06e5526cd72
