@@ -1,0 +1,30 @@
+- hosts: nginx
+  tasks:
+  - firewalld:
+      port: 5601/tcp
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: nginxinc.nginx
+  vars:
+    inginx_debug_output: true
+    nginx_selinux: true
+    nginx_selinux_tcp_ports:
+      - 5601
+    nginx_logrotate_conf_enable: true
+    nginx_logrotate_conf:
+      paths:
+         - "/var/log/nginx/*.log"
+      options:
+         - daily
+         - missingok
+         - rotate 14
+         - compress
+         - delaycompress
+         - notifempty
+         - sharedscripts
+
+
+
+  

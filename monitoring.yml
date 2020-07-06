@@ -1,0 +1,24 @@
+- hosts: nginx01
+  roles:
+    - role: elastic.beats
+  vars:
+    beats_version: 7.8.0
+    oss_version: true
+    beat: filebeat
+    output_conf: 
+     elasticsearch:
+      hosts: 
+       - 10.26.2.32:9200
+       - 10.26.3.248:9200
+       - 10.26.2.31:9200
+     logstash:
+      hosts:
+       - 10.26.2.19:5044
+       - 10.26.2.20:5044
+    beat_conf:
+      filebeat:
+        inputs:
+          - type: log
+            enabled: true
+            paths:
+              - /var/log/*.log
