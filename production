@@ -18,4 +18,16 @@ nginx01 ansible_host=10.26.2.23
 
 [logstash]
 logstash01 ansible_host=10.26.2.20
-logstash02 ansible_host=10.26.2.19
+logstash02 ansible_host=10.26.2.1
+
+[zab_srv]
+zab_srv01 ansible_host=10.26.2.18
+
+[zab_db]
+zab_db01 ansible_host=10.26.2.16
+
+[zab_proxy]
+zab_proxy01 ansible_host=10.26.2.15
+
+[zab_proxydb]
+zab_proxydb01 ansible_host=10.26.2.17

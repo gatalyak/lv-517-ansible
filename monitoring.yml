@@ -1,4 +1,4 @@
-- hosts: nginx
+- hosts: all
   tasks:
     - set_fact:        
         logstash_hosts: "{{ groups['logstash'] | map('extract',hostvars,'ansible_host') | list }}"
@@ -17,6 +17,8 @@
        - 10.26.2.20:5044
        - 10.26.2.19:5044
     beat_conf:
+     filebeatbeat.config.modules.path: ${path.config}/modules.d/*.yml
+     metricbeat.config.modules.path: ${path.config}/modules.d/*.yml
      filebeat.modules:
       - module: system
       - module: nginx
