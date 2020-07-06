@@ -1,20 +1,34 @@
-- hosts: nginx01
+- hosts: nginx
   tasks:
     - set_fact:        
         logstash_hosts: "{{ groups['logstash'] | map('extract',hostvars,'ansible_host') | list }}"
+    - hostname:
+        name: "{{ inventory_hostname }}"
   roles:
-    - role: elastic.beats
+    - { role: elastic.beats, beat: filebeat }
+    - { role: elastic.beats, beat: metricbeat }
+#    - role: elastic.beats
   vars:
     beats_version: 7.8.0
     oss_version: true
-    beat: filebeat
     output_conf: 
      logstash:
       hosts:
-       - {{ logstash_hosts[0] }}:5044
-       - {{ logstash_hosts[1 }}:5044
+       - 10.26.2.20:5044
+       - 10.26.2.19:5044
     beat_conf:
-      filebeat:
-        filebeat.modules:
-         - module: system
-         - module: nginx
+     filebeat.modules:
+      - module: system
+      - module: nginx
+     metricbeat.modules:
+      - module: system
+#      - module: nginx
+#        hosts: "[http://{{ ansible_host }}:5601]"
+     setup.dashboards.enabled: true
+     setup.kibana.host: "http://10.26.2.23:5601"
+ 
+
+
+
+
+
