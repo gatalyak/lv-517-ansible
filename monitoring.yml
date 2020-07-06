@@ -1,12 +1,12 @@
-- hosts: all
+- hosts: nginx
   tasks:
     - set_fact:        
         logstash_hosts: "{{ groups['logstash'] | map('extract',hostvars,'ansible_host') | list }}"
     - hostname:
         name: "{{ inventory_hostname }}"
   roles:
-    - { role: elastic.beats, beat: filebeat }
-    - { role: elastic.beats, beat: metricbeat }
+    - { role: elastic.beats, beat: filebeat, oss_version: true }
+    - { role: elastic.beats, beat: metricbeat, oss_version: true }
 #    - role: elastic.beats
   vars:
     beats_version: 7.8.0

@@ -1,4 +1,4 @@
-- hosts: elk-master-nodes
+- hosts: elk_master_nodes
   tasks:
   - firewalld:
       port: 9200/tcp
@@ -32,7 +32,7 @@
     es_plugins:
      - plugin: ingest-attachment
 
-- hosts: elk-data-nodes
+- hosts: elk_data_nodes
   tasks:
   - firewalld:
       port: 9200/tcp
