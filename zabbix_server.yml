@@ -1,13 +1,41 @@
-- hosts: kibana
+- hosts: zabbix_db
   tasks:
   - firewalld:
-      port: 5601/tcp
+      port: 3306/tcp
       immediate: yes
       permanent: true
       state: enabled
   roles:
-    - role: geerlingguy.kibana
-      kibana_version: "oss-7.x"
-      kibana_package: kibana-oss
-      kibana_elasticsearch_url: "[http://10.26.2.32:9200,http://10.26.3.248:9200,http://10.26.2.31:9200]"        
-  
+    - role: geerlingguy.mysql
+- hosts: zabbix_srv
+  tasks:
+  - firewalld:
+      port: 10051/tcp
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: dj-wasabi.zabbix-server
+      zabbix_selinux: true
+      zabbix_url: "{{ inventory_hostname }}"
+      database_type: mysql
+      database_type_long: mysql
+      server_dbuser: zabbix-server
+      server_dbpassword: zabbix-server
+
+- hosts: zabbix_web
+  tasks:
+  - firewalld:
+      port: 80/tcp
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: geerlingguy.apache
+    - role: dj-wasabi.zabbix-web
+        zabbix_server_hostname: 10.26.2.18
+        zabbix_url: "{{ inventory_hostname }}"
+        zabbix_server_database: mysql
+        zabbix_server_database_long: mysql
+
+
