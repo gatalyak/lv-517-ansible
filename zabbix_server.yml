@@ -49,8 +49,9 @@
     - role: dj-wasabi.zabbix-web
       zabbix_server_hostname: 10.26.2.18
       zabbix_url: "{{ ansible_host }}"
-      zabbix_server_dbport: 3306
       zabbix_vhost: false
+      zabbix_server_dbhost: 10.26.2.16
+      zabbix_server_dbport: 3306      
       zabbix_server_database: mysql
       zabbix_server_database_long: mysql
 
