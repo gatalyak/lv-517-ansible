@@ -7,6 +7,13 @@
       state: enabled
   roles:
     - role: geerlingguy.mysql
+      mysql_users:
+       - name: zabbix-server
+         host: "%"
+         password: zabbix-server
+         priv: "*.*:ALL"
+
+
 - hosts: zabbix_srv
   tasks:
   - firewalld:
@@ -18,10 +25,17 @@
     - role: dj-wasabi.zabbix-server
       zabbix_selinux: true
       zabbix_url: "{{ inventory_hostname }}"
-      database_type: mysql
-      database_type_long: mysql
-      server_dbuser: zabbix-server
-      server_dbpassword: zabbix-server
+      zabbix_server_dbhost: 10.26.2.16
+      zabbix_server_real_dbhost: 10.26.2.16
+      zabbix_server_dbport: 3306
+      zabbix_server_database: mysql
+      zabbix_database_type: mysql
+      zabbix_server_database_long: mysql
+      zabbix_server_mysql_login_host: 10.26.2.16
+      zabbix_server_mysql_login_user: zabbix-server
+      zabbix_server_mysql_login_password: zabbix-server      
+      zabbix_server_dbuser: zabbix-server
+      zabbix_server_dbpassword: zabbix-server
 
 - hosts: zabbix_web
   tasks:
@@ -33,9 +47,9 @@
   roles:
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-web
-        zabbix_server_hostname: 10.26.2.18
-        zabbix_url: "{{ inventory_hostname }}"
-        zabbix_server_database: mysql
-        zabbix_server_database_long: mysql
+      zabbix_server_hostname: 10.26.2.18
+      zabbix_url: "{{ inventory_hostname }}"
+      zabbix_server_database: mysql
+      zabbix_server_database_long: mysql
 
 
