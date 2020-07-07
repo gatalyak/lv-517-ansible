@@ -13,7 +13,9 @@
          password: zabbix-server
          priv: "*.*:ALL"
 
-
+#To run correctly with centos 7:
+#yum install policycoreutils-python
+#semodule -i my-zabbixserver.pp
 - hosts: zabbix_srv
   tasks:
   - firewalld:
