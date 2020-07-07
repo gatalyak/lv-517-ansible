@@ -1,8 +1,9 @@
 - hosts: zabbix_srv
-  become: yes
   roles:
     - role: dj-wasabi.zabbix-agent
       zabbix_selinux: true
+      zabbix_agent_become_on_localhost: false
+      zabbix_install_pip_packages: true
       zabbix_agent_server: 10.26.2.18
       zabbix_agent_serveractive: 10.26.2.18
       zabbix_agent_server_url: http://10.26.2.15/zabbix
