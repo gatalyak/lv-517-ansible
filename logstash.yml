@@ -1,4 +1,4 @@
-- hosts: geerlingguy.logstash
+- hosts: logstash
   tasks:
   - firewalld:
       port: 5044/tcp
