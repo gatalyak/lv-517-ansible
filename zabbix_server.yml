@@ -1,0 +1,13 @@
+- hosts: kibana
+  tasks:
+  - firewalld:
+      port: 5601/tcp
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: geerlingguy.kibana
+      kibana_version: "oss-7.x"
+      kibana_package: kibana-oss
+      kibana_elasticsearch_url: "[http://10.26.2.32:9200,http://10.26.3.248:9200,http://10.26.2.31:9200]"        
+  
