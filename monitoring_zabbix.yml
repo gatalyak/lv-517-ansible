@@ -1,4 +1,5 @@
 - hosts: zabbix_srv
+  become: yes
   roles:
     - role: dj-wasabi.zabbix-agent
       zabbix_selinux: true
