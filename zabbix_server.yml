@@ -49,7 +49,8 @@
     - role: dj-wasabi.zabbix-web
       zabbix_selinux: true
       zabbix_server_hostname: 10.26.2.18
-      zabbix_url: "{{ ansible_host }}"
+      zabbix_url: 10.26.2.18
+      zabbix_url_aliases: 10.26.2.18
       zabbix_vhost: true      
       zabbix_timezone: Europe/Kiev
       zabbix_server_dbhost: 10.26.2.16
