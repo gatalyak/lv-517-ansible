@@ -16,7 +16,7 @@
 - hosts: zabbix_srv
   tasks:
   - firewalld:
-      port: 10051/tcp
+      port: "{{ zabbix_server_listenport }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
@@ -26,7 +26,8 @@
     - role: dj-wasabi.zabbix-server
       zabbix_url: "{{ ansible_host }}"
       zabbix_server_real_dbhost: "{{ zabbix_server_dbhost }}"
-      zabbix_server_mysql_login_host: 10.26.2.16    
+      zabbix_server_mysql_login_host: "{{ zabbix_server_dbhost }}"
+
 - hosts: zabbix_web
   tasks:
   - firewalld:
@@ -37,11 +38,8 @@
   roles:
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-web
-      zabbix_server_hostname: 10.26.2.18
-      zabbix_url: 10.26.2.18
-      zabbix_url_aliases: 10.26.2.18
       zabbix_vhost: false      
-      zabbix_timezone: Europe/Kiev
+      
 
 
 
