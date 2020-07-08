@@ -3,3 +3,5 @@
 # 
 # localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python2.7 
 # beowolf.example.com ansible_ssh_user=root
+[nginx]
+nginx01 ansible_host=10.26.2.23
