@@ -11,3 +11,8 @@ elk-master03 ansible_host=10.26.2.31
 
 [nginx]
 nginx01 ansible_host=10.26.2.23
+
+
+
+[test]
+test01: ansible_host=10.26.2.17

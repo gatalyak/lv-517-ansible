@@ -1,13 +1,13 @@
 # A place of our production hosts
 [elk_master_nodes]
-elk_master01 ansible_host=10.26.2.32
-elk_master02 ansible_host=10.26.3.248
-elk_master03 ansible_host=10.26.2.31
+elk-master01 ansible_host=10.26.2.32
+elk-master02 ansible_host=10.26.3.248
+elk-master03 ansible_host=10.26.2.31
 
 [elk_data_nodes]
-elk_data01 ansible_host=10.26.2.30
-elk_data02 ansible_host=10.26.2.29
-elk_data03 ansible_host=10.26.2.28
+elk-data01 ansible_host=10.26.2.30
+elk-data02 ansible_host=10.26.2.29
+elk-data03 ansible_host=10.26.2.28
 
 [kibana]
 kibana01 ansible_host=10.26.2.22
@@ -29,5 +29,8 @@ zabix_db01 ansible_host=10.26.2.16
 [zabbix_web]
 zabix_web01 ansible_host=10.26.2.15
 
-[zabbix_proxydb]
-zabbix_proxydb01 ansible_host=10.26.2.17
+[zabbix:children]
+zabbix_srv
+zabbix_db
+zabbix_web
+

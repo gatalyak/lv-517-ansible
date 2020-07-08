@@ -1,21 +1,18 @@
 - hosts: zabbix_db
   tasks:
   - firewalld:
-      port: 3306/tcp
+      port: "{{ zabbix_server_dbport }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
   roles:
     - role: geerlingguy.mysql
       mysql_users:
-       - name: zabbix-server
+       - name: "{{ zabbix_server_dbuser }}"
          host: "%"
-         password: zabbix-server
+         password: "{{ zabbix_server_dbpassword }}"
          priv: "*.*:ALL"
 
-#To run correctly with centos 7:
-#yum install policycoreutils-python
-#semodule -i my-zabbixserver.pp
 - hosts: zabbix_srv
   tasks:
   - firewalld:
@@ -23,42 +20,28 @@
       immediate: yes
       permanent: true
       state: enabled
+  #Fix zabbix selinux    
+  - shell: semodule -i my-zabbixserver.pp    
   roles:
     - role: dj-wasabi.zabbix-server
-      zabbix_selinux: true
       zabbix_url: "{{ ansible_host }}"
-      zabbix_server_dbhost: 10.26.2.16
-      zabbix_server_real_dbhost: 10.26.2.16
-      zabbix_server_dbport: 3306
-      zabbix_server_database: mysql
-      zabbix_database_type: mysql
-      zabbix_server_database_long: mysql
-      zabbix_server_mysql_login_host: 10.26.2.16
-      zabbix_server_mysql_login_user: zabbix-server
-      zabbix_server_mysql_login_password: zabbix-server      
-      zabbix_server_dbuser: zabbix-server
-      zabbix_server_dbpassword: zabbix-server
-
+      zabbix_server_real_dbhost: "{{ zabbix_server_dbhost }}"
+      zabbix_server_mysql_login_host: 10.26.2.16    
 - hosts: zabbix_web
   tasks:
   - firewalld:
-      port: 80/tcp
+      port: "{{ zabbix_apache_vhost_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
   roles:
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-web
-      zabbix_selinux: true
       zabbix_server_hostname: 10.26.2.18
       zabbix_url: 10.26.2.18
       zabbix_url_aliases: 10.26.2.18
       zabbix_vhost: false      
       zabbix_timezone: Europe/Kiev
-      zabbix_server_dbhost: 10.26.2.16
-      zabbix_server_dbport: 3306      
-      zabbix_server_database: mysql
-      zabbix_server_database_long: mysql
-      zabbix_server_dbuser: zabbix-server
-      zabbix_server_dbpassword: zabbix-server
+
+
 

@@ -1,0 +1,12 @@
+# here we assign variables to particular groups
+zabbix_server_dbhost               : 10.26.2.16
+zabbix_server_dbport               : 3306
+zabbix_server_database             : mysql
+zabbix_database_type               : mysql
+zabbix_server_database_long        : mysql
+zabbix_server_mysql_login_user     : zabbix-server
+zabbix_server_mysql_login_password : zabbix-server      
+zabbix_server_dbuser               : zabbix-server
+zabbix_server_dbpassword           : zabbix-server
+zabbix_selinux                     : true
+zabbix_apache_vhost_port           : 80
