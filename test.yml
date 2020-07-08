@@ -1,0 +1,17 @@
+- hosts: elk_master_nodes
+  tasks:
+    - set_fact:
+#        es_host: "{{ groups.nginx[0] }}"
+        #master_nodes: "{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list }}"
+        #master_nodes: "{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list }}"
+        master_nodes:  "{{ groups['elk_master_nodes'] | map('extract', hostvars, ['ansible_host']) | join(',') }}"
+#  - debug: var=item
+#  with_items: '{{ master_nodes }}'
+
+    - debug: var=inventory_hostname
+    - debug: var=groups.elk_master_nodes[0]
+    - debug: var=ansible_host
+#    - debug: var=es_host
+    - debug: var=master_nodes
+
+

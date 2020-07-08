@@ -3,5 +3,11 @@
 # 
 # localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python2.7 
 # beowolf.example.com ansible_ssh_user=root
+# A place of our production hosts
+[elk_master_nodes]
+elk-master01 ansible_host=10.26.2.32
+elk-master02 ansible_host=10.26.3.248
+elk-master03 ansible_host=10.26.2.31
+
 [nginx]
 nginx01 ansible_host=10.26.2.23
