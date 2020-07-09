@@ -1,8 +1,8 @@
 # here we assign variables to particular groups
-zabbix_server_dbhost               : 10.26.2.17
-zabbix_server_hostname             : 10.26.2.17
-zabbix_url                         : 10.26.2.17
-zabbix_url_aliases                 : 10.26.2.17
+zabbix_server_dbhost               : 10.26.2.16
+zabbix_server_hostname             : 10.26.2.18
+zabbix_url                         : 10.26.2.15
+zabbix_url_aliases:                : 10.26.2.15
 zabbix_apache_vhost_port           : 80
 zabbix_server_listenport           : 10051
 zabbix_server_dbport               : 3306
