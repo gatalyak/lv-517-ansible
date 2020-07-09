@@ -20,8 +20,6 @@
       immediate: yes
       permanent: true
       state: enabled
-  #Fix zabbix selinux    
-  #- shell: semodule -i my-zabbixserver.pp    
   roles:
     - role: dj-wasabi.zabbix-server
       zabbix_url: "{{ ansible_host }}"
@@ -38,7 +36,7 @@
   roles:
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-web
-      zabbix_vhost: false      
+      zabbix_vhost: true      
       
 
 
