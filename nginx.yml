@@ -1,4 +1,4 @@
-- hosts: nginx
+- hosts: elk_nginx
   tasks:
   - firewalld:
       port: 5601/tcp
