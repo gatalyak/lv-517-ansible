@@ -9,6 +9,11 @@
       immediate: yes
       permanent: true
       state: enabled
+  - seport:
+      ports: 5601
+      proto: tcp
+      setype: http_port_t
+      state: present
   roles:
     - role: nginxinc.nginx
   vars:
@@ -26,7 +31,7 @@
                 port: 80
                 opts:
                   - default_server
-            server_name: localhost
+            server_name: kibana
             error_page: /usr/share/nginx/html
             autoindex: false
             reverse_proxy:
@@ -41,13 +46,13 @@
             zone_name: frontend
             zone_size: 64k
             sticky_cookie: false
-            servers:
+            servers:              
               frontend_server_1:
                 address: 10.26.2.22
                 port: 5601
                 weight: 1
                 health_check: max_fails=3 fail_timeout=5s
-                frontend_server_1:
+              frontend_server_2:
                 address: 10.26.2.21
                 port: 5601
                 weight: 1
@@ -55,24 +60,6 @@
 
 
 
-
-
-    #    inginx_debug_output: true
-#    nginx_selinux: true
-#    nginx_selinux_tcp_ports:
-#      - 5601
-#    nginx_logrotate_conf_enable: true
-#    nginx_logrotate_conf:
-#      paths:
-#         - "/var/log/nginx/*.log"
-#      options:
-#         - daily
-#         - missingok
-#         - rotate 14
-#         - compress
-#         - delaycompress
-#         - notifempty
-#         - sharedscripts
 #
 
 

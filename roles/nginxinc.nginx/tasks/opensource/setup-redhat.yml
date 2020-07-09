@@ -22,6 +22,12 @@
   yum:
     name: openssl
     state: latest
+
+- name: "(Install: CentOS/RedHat) Install Required CentOS/RedHat Selinux"
+  yum:
+    name: policycoreutils-python
+
+
 - name: "(Install: CentOS/RedHat) Install NGINX"
   yum:
     name: "nginx{{ nginx_version | default('') }}"
