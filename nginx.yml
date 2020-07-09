@@ -1,9 +1,5 @@
 - hosts: elk_nginx
   tasks:
-  - yum:
-     name: openssl-libs
-     state: present
-
   - firewalld:
       port: "{{ elastic_elk_nginx_port }}/tcp"
       immediate: yes
