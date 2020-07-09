@@ -4,6 +4,8 @@
 zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',hostvars,'ansible_host') | list }}"
 zabbix_agent_server                : "{{ zabbix_srv_hosts[0] }}"
 zabbix_agent_serveractive          : "{{ zabbix_srv_hosts[0] }}"
+zabbix_web_hosts                   : "{{ groups['zabbix_web'] | map('extract',hostvars,'ansible_host') | list }}"
+zabbix_url                         : "http://{{ zabbix_web_hosts[0] }}"
 zabbix_selinux                     : true
 selinux_allow_zabbix_can_network   : true
 selinux_allow_zabbix_can_http      : true
