@@ -15,4 +15,6 @@ zabbix_server_dbuser               : zabbix-server
 zabbix_server_dbpassword           : zabbix-server
 zabbix_database_creation           : true
 zabbix_selinux                     : true
+selinux_allow_zabbix_can_network   : true
+selinux_allow_zabbix_can_http      : true
 zabbix_timezone                    : Europe/Kiev
