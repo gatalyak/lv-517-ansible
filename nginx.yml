@@ -1,5 +1,9 @@
 - hosts: elk_nginx
   tasks:
+  - yum:
+     name: openssl-libs
+     state: present
+
   - firewalld:
       port: "{{ elastic_elk_nginx_port }}/tcp"
       immediate: yes
@@ -40,7 +44,7 @@
             servers:
               frontend_server_1:
                 address: 10.26.2.22
-                port: 8081
+                port: 5601
                 weight: 1
                 health_check: max_fails=3 fail_timeout=5s
       frontend:
@@ -52,7 +56,7 @@
             listen:
               listen_localhost:
                 ip: 10.26.2.22
-                port: 8081
+                port: 5601
                 ssl: false
                 opts: []
             server_name: localhost
