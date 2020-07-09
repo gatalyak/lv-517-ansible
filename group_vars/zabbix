@@ -1,9 +1,10 @@
 # here we assign variables to particular groups
-zabbix_server_dbhost               : 10.26.2.17
-zabbix_server_hostname             : 10.26.2.17
-zabbix_url                         : 10.26.2.17
-#zabbix_url_aliases                 : 10.26.2.17
-#zabbix_apache_vhost_listen_ip      : 10.26.2.17
+zabbix_db_hosts                    : "{{ groups['zabbix_db'] | map('extract',hostvars,'ansible_host') | list }}"
+zabbix_server_dbhost               : "{{ zabbix_db_hosts[0] }}"
+zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',hostvars,'ansible_host') | list }}"
+zabbix_server_hostname             : "{{ zabbix_srv_hosts[0] }}"
+zabbix_web_hosts                   : "{{ groups['zabbix_web'] | map('extract',hostvars,'ansible_host') | list }}"
+zabbix_url                         : "{{ zabbix_web_hosts[0] }}"
 zabbix_apache_vhost_port           : 80
 zabbix_server_listenport           : 10051
 zabbix_server_dbport               : 3306
