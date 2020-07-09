@@ -1,22 +1,18 @@
 - hosts: elk_nginx
   tasks:
-  - yum:
-     name: openssl-libs
-     state: present
-
   - firewalld:
       port: "{{ elastic_elk_nginx_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
   - seport:
-      ports: 5601
+      ports: "{{ elastic_kibana_port }}"
       proto: tcp
       setype: http_port_t
       state: present
   roles:
     - role: nginxinc.nginx
-  vars:
+  vars:    
     nginx_http_template_enable: true
     nginx_http_template:
       default:
@@ -28,7 +24,7 @@
             listen:
               listen_localhost:
                 ip: 0.0.0.0
-                port: 80
+                port: "{{ elastic_elk_nginx_port }}"
                 opts:
                   - default_server
             server_name: kibana
@@ -48,19 +44,15 @@
             sticky_cookie: false
             servers:              
               frontend_server_1:
-                address: 10.26.2.22
-                port: 5601
+                address: "{{ elastic_kibana_hosts[0] }}"
+                port: "{{ elastic_kibana_port }}"
                 weight: 1
                 health_check: max_fails=3 fail_timeout=5s
               frontend_server_2:
-                address: 10.26.2.21
-                port: 5601
+                address: "{{ elastic_kibana_hosts[1] }}"
+                port: "{{ elastic_kibana_port }}"
                 weight: 1
                 health_check: max_fails=3 fail_timeout=5s
-
-
-
-#
 
 
   
