@@ -1,30 +1,95 @@
 - hosts: elk_nginx
   tasks:
   - firewalld:
-      port: 5601/tcp
+      port: "{{ elastic_elk_nginx_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
   roles:
     - role: nginxinc.nginx
   vars:
-    inginx_debug_output: true
-    nginx_selinux: true
-    nginx_selinux_tcp_ports:
-      - 5601
-    nginx_logrotate_conf_enable: true
-    nginx_logrotate_conf:
-      paths:
-         - "/var/log/nginx/*.log"
-      options:
-         - daily
-         - missingok
-         - rotate 14
-         - compress
-         - delaycompress
-         - notifempty
-         - sharedscripts
+    nginx_http_template_enable: true
+    nginx_http_template:
+      default:
+        template_file: http/default.conf.j2
+        conf_file_name: default.conf
+        conf_file_location: /etc/nginx/conf.d/
+        servers:
+          server1:
+            listen:
+              listen_localhost:
+                # ip: 0.0.0.0
+                port: 80
+                opts:
+                  - default_server
+            server_name: localhost
+            error_page: /usr/share/nginx/html
+            autoindex: false
+            reverse_proxy:
+              locations:
+                frontend:
+                  location: /
+                  proxy_pass: http://kibana_servers
+        upstreams:
+          upstream_1:
+            name: kibana_servers
+            lb_method: least_conn
+            zone_name: frontend
+            zone_size: 64k
+            sticky_cookie: false
+            servers:
+              frontend_server_1:
+                address: 10.26.2.22
+                port: 8081
+                weight: 1
+                health_check: max_fails=3 fail_timeout=5s
+      frontend:
+        template_file: http/default.conf.j2
+        conf_file_name: frontend_default.conf
+        conf_file_location: /etc/nginx/conf.d/
+        servers:
+          server1:
+            listen:
+              listen_localhost:
+                ip: 10.26.2.22
+                port: 8081
+                ssl: false
+                opts: []
+            server_name: localhost
+            error_page: /usr/share/nginx/html
+            autoindex: false
+            web_server:
+              locations:
+                frontend_site:
+                  location: /
+                  proxy_hide_headers:
+                    - X-Powered-By
+                  html_file_location: /usr/share/nginx/html
+                  html_file_name: index.html
+                  autoindex: false
+              http_demo_conf: false
 
+
+
+
+
+    #    inginx_debug_output: true
+#    nginx_selinux: true
+#    nginx_selinux_tcp_ports:
+#      - 5601
+#    nginx_logrotate_conf_enable: true
+#    nginx_logrotate_conf:
+#      paths:
+#         - "/var/log/nginx/*.log"
+#      options:
+#         - daily
+#         - missingok
+#         - rotate 14
+#         - compress
+#         - delaycompress
+#         - notifempty
+#         - sharedscripts
+#
 
 
   
