@@ -6,7 +6,6 @@ zabbix_agent_server                : "{{ zabbix_srv_hosts[0] }}"
 zabbix_agent_serveractive          : "{{ zabbix_srv_hosts[0] }}"
 zabbix_web_hosts                   : "{{ groups['zabbix_web'] | map('extract',hostvars,'ansible_host') | list }}"
 zabbix_agent_server_url            : "http://{{ zabbix_web_hosts[0] }}"
-
 zabbix_agent_become_on_localhost   : False
 zabbix_selinux                     : True
 selinux_allow_zabbix_can_network   : True
@@ -22,4 +21,4 @@ zabbix_update_host                 : yes
 zabbix_host_groups                 :
                                      - Linux servers
 zabbix_link_templates              :
-                                   
+                                     - Template OS Linux by Zabbix agent
