@@ -1,4 +1,4 @@
-- hosts: elk_nginx
+- hosts: all
   tasks:
   - firewalld:
       port: "{{ zabbix_agent_listenport }}/tcp"
