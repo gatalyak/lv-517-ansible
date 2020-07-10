@@ -5,6 +5,8 @@ zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',ho
 zabbix_server_hostname             : "{{ zabbix_srv_hosts[0] }}"
 zabbix_web_hosts                   : "{{ groups['zabbix_web'] | map('extract',hostvars,'ansible_host') | list }}"
 zabbix_url                         : "{{ zabbix_web_hosts[0] }}"
+zabbix_server_version              : 4.4
+zabbix_web_version                 : 4.4
 zabbix_apache_vhost_port           : 80
 zabbix_server_listenport           : 10051
 zabbix_server_dbport               : 3306

@@ -24,7 +24,7 @@ logstash02 ansible_host=10.26.2.17
 zabbix_srv01 ansible_host=10.26.2.18
 
 [zabbix_db]
-zabix_db01 ansible_host=10.26.2.17
+zabix_db01 ansible_host=10.26.2.16
 
 [zabbix_web]
 zabix_web01 ansible_host=10.26.2.15
