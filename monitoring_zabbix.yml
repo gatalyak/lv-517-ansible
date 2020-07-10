@@ -1,8 +1,13 @@
 - hosts: elk_nginx
+  tasks:
+  - firewalld:
+      port: "{{ zabbix_agent_listenport }}/tcp"
+      immediate: yes
+      permanent: true
+      state: enabled
   roles:
     - role: dj-wasabi.zabbix-agent
-      zabbix_agent_become_on_localhost: false
-      zabbix_install_pip_packages: true      
+      #zabbix_agent_become_on_localhost: false
 
 
       

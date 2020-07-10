@@ -1,11 +1,4 @@
 # here we assign variables to particular groups
-zabbix_db_hosts                    : "{{ groups['zabbix_db'] | map('extract',hostvars,'ansible_host') | list }}"
-zabbix_server_dbhost               : "{{ zabbix_db_hosts[0] }}"
-zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',hostvars,'ansible_host') | list }}"
-zabbix_server_hostname             : "{{ zabbix_srv_hosts[0] }}"
-zabbix_web_hosts                   : "{{ groups['zabbix_web'] | map('extract',hostvars,'ansible_host') | list }}"
-zabbix_url                         : "{{ zabbix_web_hosts[0] }}"
-
 elastic_kibana_hosts               : "{{ groups['kibana'] | map('extract',hostvars,'ansible_host') | list }}"
 elastic_kibana_port                : 5601
 elastic_elk_nginx_port             : 80

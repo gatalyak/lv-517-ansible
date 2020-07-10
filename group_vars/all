@@ -5,15 +5,21 @@ zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',ho
 zabbix_agent_server                : "{{ zabbix_srv_hosts[0] }}"
 zabbix_agent_serveractive          : "{{ zabbix_srv_hosts[0] }}"
 zabbix_web_hosts                   : "{{ groups['zabbix_web'] | map('extract',hostvars,'ansible_host') | list }}"
-zabbix_url                         : "http://{{ zabbix_web_hosts[0] }}"
-zabbix_selinux                     : true
-selinux_allow_zabbix_can_network   : true
-selinux_allow_zabbix_can_http      : true
-zabbix_api_use                     : true # use zabbix_api_create_hosts and/or zabbix_api_create_hostgroup
+zabbix_agent_server_url            : "http://{{ zabbix_web_hosts[0] }}"
+
+zabbix_agent_become_on_localhost   : False
+zabbix_selinux                     : True
+selinux_allow_zabbix_can_network   : True
+selinux_allow_zabbix_can_http      : True
+zabbix_agent_listenport            : 10050
+zabbix_agent_firewall_enable       : False
+zabbix_api_use                     : True # use zabbix_api_create_hosts and/or zabbix_api_create_hostgroup
+zabbix_api_create_hosts            : True
 zabbix_api_user                    : Admin
 zabbix_api_pass                    : zabbix
 zabbix_create_host                 : present
+zabbix_update_host                 : yes
 zabbix_host_groups                 :
-                                     - Linux Servers
+                                     - Linux servers
 zabbix_link_templates              :
-                                     - Template OS Linux
+                                   
