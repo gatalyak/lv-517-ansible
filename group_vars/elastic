@@ -1,21 +1,5 @@
 # here we assign variables to particular groups
 elastic_kibana_hosts               : "{{ groups['kibana'] | map('extract',hostvars,'ansible_host') | list }}"
-elastic_kibana_port                : 5601
+kibana_server_port                 : 5601
 elastic_elk_nginx_port             : 80
-
-
-zabbix_apache_vhost_port           : 80
-zabbix_server_listenport           : 10051
-zabbix_server_dbport               : 3306
-zabbix_server_database             : mysql
-zabbix_database_type               : mysql
-zabbix_server_database_long        : mysql
-zabbix_server_mysql_login_user     : zabbix-server
-zabbix_server_mysql_login_password : zabbix-server      
-zabbix_server_dbuser               : zabbix-server
-zabbix_server_dbpassword           : zabbix-server
-zabbix_database_creation           : true
-zabbix_selinux                     : true
-selinux_allow_zabbix_can_network   : true
-selinux_allow_zabbix_can_http      : true
-zabbix_timezone                    : Europe/Kiev
+kibana_elasticsearch_url           : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', 'http://\\1:9200') | join(',') }}]"
