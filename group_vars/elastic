@@ -3,3 +3,5 @@ elastic_kibana_hosts               : "{{ groups['kibana'] | map('extract',hostva
 kibana_server_port                 : 5601
 elastic_elk_nginx_port             : 80
 kibana_elasticsearch_url           : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', 'http://\\1:9200') | join(',') }}]"
+logstash_listen_port_beats         : 5044
+logstash_elasticsearch_hosts       : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', '\"http://\\1:9200\"') | join(',') }}]"
