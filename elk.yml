@@ -1,12 +1,12 @@
 - hosts: elk_master_nodes
   tasks:
   - firewalld:
-      port: 9200/tcp
+      port: "{{ elastic_http_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
   - firewalld:
-      port: 9300/tcp
+      port: "{{ elastic_nodes_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
@@ -22,9 +22,9 @@
     es_heap_size: "1g"
     es_config:
       cluster.name: "elk-cluster"
-      cluster.initial_master_nodes: "10.26.2.32:9300,10.26.3.248:9300,10.26.2.31:9300"
-      discovery.seed_hosts: "10.26.2.32:9300,10.26.3.248:9300,10.26.2.31:9300"
-      http.port: 9200
+      cluster.initial_master_nodes: "{{ elastic_cluster_initial_master_nodes }}"
+      discovery.seed_hosts: "{{ elastic_discovery_seed_hosts }}"
+      http.port: "{{ elastic_http_port }}"
       node.data: false
       node.master: true
       bootstrap.memory_lock: false
@@ -35,12 +35,12 @@
 - hosts: elk_data_nodes
   tasks:
   - firewalld:
-      port: 9200/tcp
+      port: "{{ elastic_http_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
   - firewalld:
-      port: 9300/tcp
+      port: "{{ elastic_nodes_port }}/tcp"
       immediate: yes
       permanent: true
       state: enabled
@@ -54,9 +54,9 @@
     es_java_install: true
     es_config:
       cluster.name: "elk-cluster"
-      cluster.initial_master_nodes: "10.26.2.32:9300,10.26.3.248:9300,10.26.2.31:9300"
-      discovery.seed_hosts: "10.26.2.32:9300,10.26.3.248:9300,10.26.2.31:9300"
-      http.port: 9200
+      cluster.initial_master_nodes: "{{ elastic_cluster_initial_master_nodes }}"
+      discovery.seed_hosts: "{{ elastic_discovery_seed_hosts }}"
+      http.port: "{{ elastic_http_port }}"
       node.data: true
       node.master: false
       bootstrap.memory_lock: false

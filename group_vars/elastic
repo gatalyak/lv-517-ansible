@@ -1,7 +1,11 @@
 # here we assign variables to particular groups
-elastic_kibana_hosts               : "{{ groups['kibana'] | map('extract',hostvars,'ansible_host') | list }}"
-kibana_server_port                 : 5601
-elastic_elk_nginx_port             : 80
-kibana_elasticsearch_url           : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', 'http://\\1:9200') | join(',') }}]"
-logstash_listen_port_beats         : 5044
-logstash_elasticsearch_hosts       : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', '\"http://\\1:9200\"') | join(',') }}]"
+elastic_http_port                         : 9200
+elastic_nodes_port                        : 9300
+elastic_cluster_initial_master_nodes      : "{{ groups['elk_master_nodes'] | map('extract', hostvars, ['ansible_host']) | join(':9300,') }}:9300"
+elastic_discovery_seed_hosts              : "{{ groups['elk_master_nodes'] | map('extract', hostvars, ['ansible_host']) | join(':9300,') }}:9300"
+elastic_kibana_hosts                      : "{{ groups['kibana'] | map('extract',hostvars,'ansible_host') | list }}"
+kibana_server_port                        : 5601
+elastic_elk_nginx_port                    : 80
+kibana_elasticsearch_url                  : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', 'http://\\1:9200') | join(',') }}]"
+logstash_listen_port_beats                : 5044
+logstash_elasticsearch_hosts              : "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', '\"http://\\1:9200\"') | join(',') }}]"
