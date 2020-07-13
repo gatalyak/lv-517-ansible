@@ -1,0 +1,10 @@
+- hosts: elk_nginx
+  roles:
+    - { role: elastic.beats, beat: filebeat}
+#    - { role: elastic.beats, beat: metricbeat}
+ 
+
+
+
+
+

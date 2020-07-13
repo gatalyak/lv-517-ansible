@@ -1,13 +1,13 @@
 # A place of our staging hosts
 [elk_master_nodes]
 elk-master01 ansible_host=10.26.2.17
-elk-master02 ansible_host=10.26.2.17
-elk-master03 ansible_host=10.26.2.17
+#elk-master02 ansible_host=10.26.2.17
+#elk-master03 ansible_host=10.26.2.17
 
 [elk_data_nodes]
 elk-data01 ansible_host=10.26.2.17
-elk-data02 ansible_host=10.26.2.17
-elk-data03 ansible_host=10.26.2.17
+#elk-data02 ansible_host=10.26.2.17
+#elk-data03 ansible_host=10.26.2.17
 
 [kibana]
 kibana01 ansible_host=10.26.2.17

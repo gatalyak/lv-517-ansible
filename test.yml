@@ -1,20 +1,26 @@
-- hosts: nginx
+- hosts: elk_nginx
   #mytest: "{{ hostvars.nginx}}"
   tasks:
     - set_fact:
+        #fact1: "[{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | map('regex_replace', '(.*)', '\"http://\\1:{{ elastic_http_port }}\"') | join(',') }}]"
+        fact1: "{{ groups['logstash'] | map('extract',hostvars,'ansible_host') | list | to_nice_yaml }}"
+
+
+
         #mytest: "{{ hostvars.nginx.nginx01.ansible_host }}"
         #es_host: "{{ groups.nginx[0] }}"
         #es_host: "{{ hostvars.nginx01.ansible_host }}"
         #master_nodes: "{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list }}"
-        #master_nodes: "{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list }}"
-        #master_nodes:  "{{ groups['elk_master_nodes'] | map('extract', hostvars, ['ansible_host']) | join(',') }}"
+        master_nodes: "{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list }}"
+        #master_nodes:  "{{ groups['elk_master_nodes'] | map('extract', hostvars, ['ansible_host']) | join(':9200,') }}:9200"
+        #fact2: "{{ fact1 | join(',') }}"
 #  - debug: var=item
 #  with_items: '{{ master_nodes }}'
 
     - debug: var=inventory_hostname
     - debug: var=groups.elk_master_nodes[0]
-    - debug: var=ansible_host
-    - debug: var=mytest
-    - debug: var=master_nodes[0]
+    - debug: var=beat_conf
+    - debug: var=output_conf
+    - debug: var=fact1
 
 

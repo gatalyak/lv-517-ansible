@@ -27,26 +27,28 @@ zabbix_link_templates              :
                                      - Template OS Linux by Zabbix agent
 
 #Elastic beats section
-kibana_listen_port                 : 80
-beats_version                      : 7.8.0
-oss_version                        : true
-setup.dashboards.enabled           : true
-elk_nginx_hosts                    : "{{ groups['elk_nginx'] | map('extract',hostvars,'ansible_host') | list }}"
-output_conf                        : 
-  logstash                         :
-    hosts                          : "{{ groups['logstash'] | map('extract',hostvars,'ansible_host') | list }}"
+#beats_version: 7.8.0
+#oss_version: true
+#output_conf                        : 
+#  logstash                         :
+hosts:
+  - 10.26.2.20:5044
+  - 10.26.2.19:5044
+
+#    hosts                          : "{{ groups['elk_master_nodes'] | map('extract',hostvars,'ansible_host') | list | to_nice_yaml }}"
                                      
-beat_conf                          :
-  setup.dashboards.enabled         : true
-  setup.kibana.host                : "http://{{ elk_nginx_hosts[0] }}:{{ kibana_listen_port }}"
-  filebeat.config.modules.path     : "${path.config}/modules.d/*.yml"
-  metricbeat.config.modules.path   : "${path.config}/modules.d/*.yml"
-  filebeat.modules                 :
+
+
+
+#beat_conf                          :
+#  filebeat.config.modules.path     : ${path.config}/modules.d/*.yml
+#  metricbeat.config.modules.path   : ${path.config}/modules.d/*.yml
+#    filebeat.modules               :
+#                                     - module: system
+#                                     - module: nginx
+#    metricbeat.modules             :
                                      - module: system
-                                     - module: nginx
-  metricbeat.modules               :
-                                     - module: system
-
-
-
+#setup.dashboards.enabled           : true
+#elk_nginx_hosts                    : "{{ groups['elk_nginx'] | map('extract',hostvars,'ansible_host') | list }}"
+#setup.kibana.host                  : "http://{{ elk_nginx_hosts[0] }}"
 
