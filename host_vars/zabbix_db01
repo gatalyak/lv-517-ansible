@@ -1,4 +1,3 @@
-# if systems need specific variables, put them here
 beat_conf                          :
   logging.metrics.enabled          : False
   setup.dashboards.enabled         : False
@@ -7,7 +6,7 @@ beat_conf                          :
   metricbeat.config.modules.path   : "${path.config}/modules.d/*.yml"
   filebeat.modules                 :
                                      - module: system
-                                     - module: nginx
+                                     - module: mysql
   metricbeat.modules               :
                                      - module: system
 

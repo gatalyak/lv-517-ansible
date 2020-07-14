@@ -30,7 +30,7 @@ zabix-db01 ansible_host=10.26.2.16
 zabix-web01 ansible_host=10.26.2.15
 
 [gitlab]
-gitlab ansible_host=10.26.1.253
+gitlab01 ansible_host=10.26.1.253
 
 [zabbix:children]
 zabbix_srv
@@ -44,4 +44,11 @@ kibana
 logstash
 elk_nginx
 
+[monitor_zabbix:children]
+elastic
+zabbix
+
+[monitor_beats:children]
+elastic
+zabbix
 
