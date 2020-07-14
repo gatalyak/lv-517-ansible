@@ -15,7 +15,6 @@
         #master_nodes:  "{{ groups['elk_master_nodes'] | map('extract', hostvars, ['ansible_host']) | join(':9200,') }}:9200"
         #fact2: "{{ fact1 | join(',') }}"
 #  - debug: var=item
-#  with_items: '{{ master_nodes }}'
 
     - debug: var=inventory_hostname
     - debug: var=groups.elk_master_nodes[0]
