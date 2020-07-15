@@ -1,0 +1,9 @@
+- hosts: monitor_metrics
+  roles:
+    - { role: elastic.beats, beat: metricbeat}
+ 
+
+
+
+
+

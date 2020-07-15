@@ -1,0 +1,19 @@
+- hosts: monitor_zabbix
+  tasks:
+  - firewalld:
+      port: "{{ zabbix_agent_listenport }}/tcp"
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: dj-wasabi.zabbix-agent
+
+
+      
+
+
+
+
+
+
+

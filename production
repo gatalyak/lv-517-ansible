@@ -21,7 +21,7 @@ logstash01 ansible_host=10.26.2.20
 logstash02 ansible_host=10.26.2.19
 
 [grafana]
-grafana01 ansible_host=10.26.2.24
+#grafana01 ansible_host=10.26.2.24
 
 [zabbix_srv]
 zabbix-srv01 ansible_host=10.26.2.18
@@ -35,6 +35,11 @@ zabbix-web01 ansible_host=10.26.2.15
 [gitlab]
 gitlab01 ansible_host=10.26.1.253
 
+[webserver]
+jenkins ansible_host=10.26.1.255
+
+
+
 [zabbix:children]
 zabbix_srv
 zabbix_db
@@ -47,11 +52,45 @@ kibana
 logstash
 elk_nginx
 
+[tomcat]
+Tomcat1 ansible_host=10.26.1.215
+Tomcat2 ansible_host=10.26.1.217
+Tomcat3 ansible_host=10.26.3.226
+
+[postgresql]
+Postgresql1 ansible_host=10.26.1.214
+Postgresql2 ansible_host=10.26.1.216
+
+[haproxy]
+HaProxy-Master ansible_host=10.26.1.210
+HaProxy-Backup ansible_host=10.26.1.211
+
+[nginx]
+Nginx-Master ansible_host=10.26.1.212
+Nginx-Backup ansible_host=10.26.1.213
+
 [monitor_zabbix:children]
 elastic
 zabbix
+tomcat
+postgresql
+haproxy
+nginx
+gitlab
+webserver
 
-[monitor_beats:children]
+[monitor_logs:children]
 elastic
 zabbix
+tomcat
+postgresql
+haproxy
+nginx
+
+[monitor_metrics:children]
+tomcat
+postgresql
+haproxy
+nginx
+
 

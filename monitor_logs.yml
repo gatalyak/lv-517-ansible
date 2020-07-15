@@ -1,0 +1,9 @@
+- hosts: monitor_logs
+  roles:
+    - { role: elastic.beats, beat: filebeat}
+ 
+
+
+
+
+
