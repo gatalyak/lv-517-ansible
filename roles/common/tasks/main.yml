@@ -1,2 +1,6 @@
 ---
 # tasks file for common
+- name: Set hosname
+  hostname:
+    name: "{{ inventory_hostname }}"
+

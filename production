@@ -20,14 +20,17 @@ elk-nginx01 ansible_host=10.26.2.23
 logstash01 ansible_host=10.26.2.20
 logstash02 ansible_host=10.26.2.19
 
+[grafana]
+grafana01 ansible_host=10.26.2.24
+
 [zabbix_srv]
 zabbix-srv01 ansible_host=10.26.2.18
 
 [zabbix_db]
-zabix-db01 ansible_host=10.26.2.16
+zabbix-db01 ansible_host=10.26.2.16
 
 [zabbix_web]
-zabix-web01 ansible_host=10.26.2.15
+zabbix-web01 ansible_host=10.26.2.15
 
 [gitlab]
 gitlab01 ansible_host=10.26.1.253
