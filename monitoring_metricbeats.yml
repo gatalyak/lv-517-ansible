@@ -1,9 +1,0 @@
-- hosts: zabbix
-  roles:
-    - { role: elastic.beats, beat: metricbeat}
- 
-
-
-
-
-
