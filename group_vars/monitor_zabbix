@@ -26,7 +26,7 @@ zabbix_host_groups                 :
 zabbix_link_templates              :
                                      - Template OS Linux by Zabbix agent
 zabbix_agent_userparameters        :
-                                     - name: template_db_postgresql
+                                     - name: postgresql
                                        scripts_dir: postgresql
 
 
