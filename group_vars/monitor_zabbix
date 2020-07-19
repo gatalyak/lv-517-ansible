@@ -28,6 +28,7 @@ zabbix_link_templates              :
 zabbix_agent_userparameters        :
                                      - name: postgresql
                                        scripts_dir: postgresql
+                                     - name: mysql                                    
 
 
 
