@@ -3,4 +3,5 @@
 - name: Set hosname
   hostname:
     name: "{{ inventory_hostname }}"
-
+- name: Synchronize time
+  shell: vmware-toolbox-cmd timesync enable
