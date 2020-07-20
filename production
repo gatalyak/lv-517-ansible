@@ -70,19 +70,21 @@ Nginx-Master ansible_host=10.26.1.212
 Nginx-Backup ansible_host=10.26.1.213
 
 [monitor_zabbix:children]
-#elastic
-#zabbix
-#tomcat
+elastic
+zabbix
+grafana
+tomcat
 postgresql
-#haproxy
-#nginx
-#gitlab
-#webserver
-#elk_nginx
+haproxy
+nginx
+gitlab
+webserver
+elk_nginx
 
 [monitor_logs:children]
 elastic
 zabbix
+grafana
 tomcat
 postgresql
 haproxy
