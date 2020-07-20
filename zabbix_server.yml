@@ -5,6 +5,11 @@
       immediate: yes
       permanent: true
       state: enabled
+  - firewalld:
+      port: "{{ javagateway_listenport }}/tcp"
+      immediate: yes
+      permanent: true
+      state: enabled
   roles:
     - role: geerlingguy.mysql
       mysql_users:
@@ -25,6 +30,7 @@
       zabbix_url: "{{ ansible_host }}"
       zabbix_server_real_dbhost: "{{ zabbix_server_dbhost }}"
       zabbix_server_mysql_login_host: "{{ zabbix_server_dbhost }}"
+
 
 - hosts: zabbix_web
   tasks:
