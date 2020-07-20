@@ -1,0 +1,10 @@
+- hosts: grafana
+  tasks:
+  - firewalld:
+      port: "{{ grafana_srv_port }}/tcp"
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: cloudalchemy.grafana
+  
