@@ -1,6 +1,12 @@
 # A place to put variables that apply to all groups
 # Create a file in this directory called "webservers" to set variables
 # for the "webservers" group.
+#                                     - module: system
+#                                     - module: nginx
+#                                     - module: haproxy
+#                                     - module: postgresql
+#                                     - module: mysql
+#                                     - module: apache
 
 #Elastic beats section
 kibana_listen_port                 : 80
@@ -27,7 +33,3 @@ beat_conf                          :
                                      - module: apache
   metricbeat.modules               :
                                      - module: system
-
-
-
-
