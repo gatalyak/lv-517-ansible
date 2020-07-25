@@ -1,4 +1,4 @@
-- hosts: grafana
+- hosts: jenkins
   roles:
     - role: common
   

@@ -1,0 +1,15 @@
+#Purpose: deploy java gateway to monitor java applications
+- hosts: zabbix_srv
+  tasks:
+  - firewalld:
+      port: "{{ javagateway_listenport }}/tcp"
+      immediate: yes
+      permanent: true
+      state: enabled
+  roles:
+    - role: dj-wasabi.zabbix-javagateway
+
+      
+
+
+

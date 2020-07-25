@@ -1,6 +1,6 @@
 # A place to put variables that apply to all groups
-# Create a file in this directory called "webservers" to set variables
-# for the "webservers" group.
+# Create a file in this directory called "monitor_zabbix" to set variables
+# for the "monitor_zabbix" group.
 
 # Zabbix section
 zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',hostvars,'ansible_host') | list }}"
@@ -16,7 +16,7 @@ selinux_allow_zabbix_can_http      : True
 zabbix_agent_listenport            : 10050
 zabbix_agent_firewall_enable       : False
 zabbix_api_use                     : True # use zabbix_api_create_hosts and/or zabbix_api_create_hostgroup
-zabbix_api_create_hosts            : True
+zabbix_api_create_hosts            : False
 zabbix_api_user                    : Admin
 zabbix_api_pass                    : zabbix
 zabbix_create_host                 : present

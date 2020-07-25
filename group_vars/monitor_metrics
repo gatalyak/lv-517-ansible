@@ -20,6 +20,11 @@ beat_conf                          :
   metricbeat.config.modules.path   : "${path.config}/modules.d/*.yml"
   filebeat.modules                 :
                                      - module: system
+                                     - module: nginx
+                                     - module: haproxy
+                                     - module: postgresql
+                                     - module: mysql
+                                     - module: apache
   metricbeat.modules               :
                                      - module: system
 
