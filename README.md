@@ -1,7 +1,17 @@
 # About This Repo #
-This is a skeleton of an Ansible home directory. You can control all of your application environments from this directory. If you work with multiple customers, you probably want to create a separate copy of this repo for each customer.
+This is a Ansible home directory to deploy and configure Elastic Stack and Zabbing monitoring software. The playbooks are:
+elk.yml - to deploy and configure Elastic Search with separate master and data nodes. In the inventory add the hosts to the group "elk_master_nodes" for master nodes, and "elk_data_nodes" for data nodes. To change the configuration, please modify "group_vars/elastic"
+logstash.yml - to deploy and configure the Logstash instances. In the inventory add the hosts to the group "logstash".To change the configuration, please modify "group_vars/elastic"
+kibana.yml - to deploy and configure the Kibana instances. In the inventory add the hosts to the group "kibana". To change the configuration, please modify "group_vars/elastic"
+nginx.yml - to deploy and configure the Nginx load balancer. In the inventory add the hosts to the group "elk_nginx" To change the configuration, please modify "group_vars/elastic"
+zabbix_server.yml - to deploy and configure Zabbix monitoring system. In the inventory add the hosts to the group "zabbix_db" for DB server, "zabbix_srv" - for Zabbix server, "zabbix_web" - for Zabbix Web. To change the configuration, please modify "group_vars/zabbix"
+zabbix_server_javagw - do deploy the Zabbix gateway to monitor JMX Java application.
+monitor_logs.yml - to deploy and configure filebeat agents to collect logs. In the inventory add the hosts to the group "monitor_logs" . To change the configuration, please modify "group_vars/monitor_logs"
+monitor_metric.yml - to deploy and configure metricbeat agents to collect metric. In the inventory add the hosts to the group "monitor_metric" . To change the configuration, please modify "group_vars/monitor_metric"
+monitor_zabbix.yml - to deploy and configure filebeat agents to collect logs. In the inventory add the hosts to the group "monitor_zabbix" . To change the configuration, please modify "group_vars/monitor_zabbix"
+grafana.yml - to deploy and configure Grafana. In the inventory add the hosts to the group "grafana" . To change the configuration, please modify "group_vars/grafana".
 
-This repo was designed to help new Ansible users to get up and running quickly. Feel free to add to it and add additional tips and tricks. Pull requests welcome.
+
 
 # Ansible Tips #
 In your roles directory, type ansible-galaxy init <em>role_name</em> in order to generate an empty skeleton for a new role you are working on.
