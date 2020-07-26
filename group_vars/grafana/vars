@@ -1,5 +1,5 @@
 grafana_srv_port                  : 3000
 grafana_security                  : 
                                     admin_user: admin
-                                    admin_password: grafana
+                                    admin_password: "{{ vault_admin_password }}"
 

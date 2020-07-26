@@ -17,11 +17,12 @@ zabbix_server_database             : mysql
 zabbix_database_type               : mysql
 zabbix_server_database_long        : mysql
 zabbix_server_mysql_login_user     : zabbix-server
-zabbix_server_mysql_login_password : zabbix-server      
+zabbix_server_mysql_login_password : "{{ vault_zabbix_server_mysql_login_password }}"
 zabbix_server_dbuser               : zabbix-server
-zabbix_server_dbpassword           : zabbix-server
+zabbix_server_dbpassword           : "{{ vault_zabbix_server_dbpassword }}"
 zabbix_database_creation           : true
 zabbix_selinux                     : true
 selinux_allow_zabbix_can_network   : true
 selinux_allow_zabbix_can_http      : true
 zabbix_timezone                    : Europe/Kiev
+

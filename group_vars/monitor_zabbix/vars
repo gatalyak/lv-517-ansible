@@ -18,7 +18,7 @@ zabbix_agent_firewall_enable       : False
 zabbix_api_use                     : True # use zabbix_api_create_hosts and/or zabbix_api_create_hostgroup
 zabbix_api_create_hosts            : False
 zabbix_api_user                    : Admin
-zabbix_api_pass                    : zabbix
+zabbix_api_pass                    : "{{ vault_zabbix_api_pass }}"
 zabbix_create_host                 : present
 zabbix_update_host                 : yes
 zabbix_host_groups                 :
