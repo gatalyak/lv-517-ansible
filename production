@@ -34,11 +34,14 @@ zabbix-web01 ansible_host=10.26.2.15
 
 [gitlab]
 gitlab01 ansible_host=10.26.1.253
+<<<<<<< HEAD
 
 [webserver]
 jenkins ansible_host=10.26.3.235
 
 
+=======
+>>>>>>> a43dea70dc86bdde18df3107a1df4a44256d0128
 
 [zabbix:children]
 zabbix_srv
