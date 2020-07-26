@@ -2,16 +2,16 @@
 This is a Ansible home directory to deploy and configure Elastic Stack and Zabbing monitoring software. The playbooks are:
  
 1. **elk.yml - to deploy and configure Elastic Search with separate master and data nodes. In the inventory add the hosts to the group "elk_master_nodes" for master nodes, and "elk_data_nodes" for data nodes. To change the configuration, please modify "group_vars/elastic".**
-2. logstash.yml - to deploy and configure the Logstash instances. In the inventory add the hosts to the group "logstash".To change the configuration, please modify "group_vars/elastic".
-3. kibana.yml - to deploy and configure the Kibana instances. In the inventory add the hosts to the group "kibana". To change the configuration, please modify "group_vars/elastic".
-4. nginx.yml - to deploy and configure the Nginx load balancer. In the inventory add the hosts to the group "elk_nginx" To change the configuration, please modify "group_vars/elastic".
-5. zabbix_server.yml - to deploy and configure Zabbix monitoring system. In the inventory add the hosts to the group "zabbix_db" for DB server, "zabbix_srv" - for Zabbix server, "zabbix_web" - for Zabbix Web. To change the configuration, please modify "group_vars/zabbix".
-6. zabbix_server_javagw - do deploy the Zabbix gateway to monitor JMX Java application.
-monitor_logs.yml - to deploy and configure filebeat agents to collect logs. In the inventory add the hosts to the group "monitor_logs" . To change the configuration, please modify "group_vars/monitor_logs".
-7. monitor_metric.yml - to deploy and configure metricbeat agents to collect metric. In the inventory add the hosts to the group "monitor_metric" . To change the configuration, please modify "group_vars/monitor_metric".
-8. monitor_zabbix.yml - to deploy and configure filebeat agents to collect logs. In the inventory add the hosts to the group "monitor_zabbix" . To change the configuration, please modify "group_vars/monitor_zabbix".
-9. grafana.yml - to deploy and configure Grafana. In the inventory add the hosts to the group "grafana" . To change the configuration, please modify "group_vars/grafana".
-10. site.yml - to set environment for hosts (hostname, time sync, etc.). Based on the common role.
+2. **logstash.yml - to deploy and configure the Logstash instances. In the inventory add the hosts to the group "logstash".To change the configuration, please modify "group_vars/elastic".**
+3. **kibana.yml - to deploy and configure the Kibana instances. In the inventory add the hosts to the group "kibana". To change the configuration, please modify "group_vars/elastic".**
+4. **nginx.yml - to deploy and configure the Nginx load balancer. In the inventory add the hosts to the group "elk_nginx" To change the configuration, please modify "group_vars/elastic".**
+5. **zabbix_server.yml - to deploy and configure Zabbix monitoring system. In the inventory add the hosts to the group "zabbix_db" for DB server, "zabbix_srv" - for Zabbix server, "zabbix_web" - for Zabbix Web. To change the configuration, please modify "group_vars/zabbix".**
+6. **zabbix_server_javagw - do deploy the Zabbix gateway to monitor JMX Java application.
+monitor_logs.yml - to deploy and configure filebeat agents to collect logs. In the inventory add the hosts to the group "monitor_logs" . To change the configuration, please modify "group_vars/monitor_logs".**
+7. **monitor_metric.yml - to deploy and configure metricbeat agents to collect metric. In the inventory add the hosts to the group "monitor_metric" . To change the configuration, please modify "group_vars/monitor_metric".**
+8. **monitor_zabbix.yml - to deploy and configure filebeat agents to collect logs. In the inventory add the hosts to the group "monitor_zabbix" . To change the configuration, please modify "group_vars/monitor_zabbix".**
+9. **grafana.yml - to deploy and configure Grafana. In the inventory add the hosts to the group "grafana" . To change the configuration, please modify "group_vars/grafana".**
+10. **site.yml - to set environment for hosts (hostname, time sync, etc.). Based on the common role.**
 
 
 
