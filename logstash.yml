@@ -6,7 +6,7 @@
       permanent: true
       state: enabled
   roles:
-    - role: geerlingguy.java
-    - role: geerlingguy.logstash
+    - role: java
+    - role: logstash
       logstash_version: "oss-7.x"
 

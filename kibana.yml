@@ -6,7 +6,7 @@
       permanent: true
       state: enabled
   roles:
-    - role: geerlingguy.kibana
+    - role: kibana
       kibana_version: "oss-7.x"
       kibana_package: kibana-oss
   

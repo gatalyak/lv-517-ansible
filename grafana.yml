@@ -6,5 +6,5 @@
       permanent: true
       state: enabled
   roles:
-    - role: cloudalchemy.grafana
+    - role: grafana
   
