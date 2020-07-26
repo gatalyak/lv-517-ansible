@@ -7,7 +7,7 @@
       permanent: true
       state: enabled
   roles:
-    - role: dj-wasabi.zabbix-javagateway
+    - role: zabbix-javagateway
 
       
 

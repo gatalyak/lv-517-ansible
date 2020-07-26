@@ -1,4 +1,4 @@
-- hosts: jenkins
+- hosts: all
   roles:
     - role: common
   

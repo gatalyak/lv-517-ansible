@@ -1,12 +1,6 @@
 # A place to put variables that apply to all groups
-# Create a file in this directory called "webservers" to set variables
-# for the "webservers" group.
-#                                     - module: system
-#                                     - module: nginx
-#                                     - module: haproxy
-#                                     - module: postgresql
-#                                     - module: mysql
-#                                     - module: apache
+# Create a file in this directory called "monitor_logs" to set variables
+# for the "monitor_logs" group.
 
 #Elastic beats section
 kibana_listen_port                 : 80

@@ -11,7 +11,7 @@
       permanent: true
       state: enabled
   roles:
-    - role: geerlingguy.mysql
+    - role: mysql
       mysql_users:
        - name: "{{ zabbix_server_dbuser }}"
          host: "%"
@@ -26,7 +26,7 @@
       permanent: true
       state: enabled
   roles:
-    - role: dj-wasabi.zabbix-server
+    - role: zabbix-server
       zabbix_url: "{{ ansible_host }}"
       zabbix_server_real_dbhost: "{{ zabbix_server_dbhost }}"
       zabbix_server_mysql_login_host: "{{ zabbix_server_dbhost }}"
@@ -40,8 +40,8 @@
       permanent: true
       state: enabled
   roles:
-    - role: geerlingguy.apache
-    - role: dj-wasabi.zabbix-web
+    - role: apache
+    - role: zabbix-web
       zabbix_vhost: true      
       
 

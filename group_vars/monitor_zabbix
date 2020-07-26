@@ -1,6 +1,6 @@
 # A place to put variables that apply to all groups
-# Create a file in this directory called "webservers" to set variables
-# for the "webservers" group.
+# Create a file in this directory called "monitor_zabbix" to set variables
+# for the "monitor_zabbix" group.
 
 # Zabbix section
 zabbix_srv_hosts                   : "{{ groups['zabbix_srv'] | map('extract',hostvars,'ansible_host') | list }}"
@@ -28,6 +28,7 @@ zabbix_link_templates              :
 zabbix_agent_userparameters        :
                                      - name: postgresql
                                        scripts_dir: postgresql
+                                     - name: mysql                                    
 
 
 
