@@ -1,6 +1,6 @@
 # About This Repo #
 This is a Ansible home directory to deploy and configure Elastic Stack and Zabbing monitoring software. The playbooks are:
-<em>elk.yml - to deploy and configure Elastic Search with separate master and data nodes. In the inventory add the hosts to the group "elk_master_nodes" for master nodes, and "elk_data_nodes" for data nodes. To change the configuration, please modify "group_vars/elastic"</em>
+<pre>elk.yml - to deploy and configure Elastic Search with separate master and data nodes. In the inventory add the hosts to the group "elk_master_nodes" for master nodes, and "elk_data_nodes" for data nodes. To change the configuration, please modify "group_vars/elastic"</pre>
 logstash.yml - to deploy and configure the Logstash instances. In the inventory add the hosts to the group "logstash".To change the configuration, please modify "group_vars/elastic"
 kibana.yml - to deploy and configure the Kibana instances. In the inventory add the hosts to the group "kibana". To change the configuration, please modify "group_vars/elastic"
 nginx.yml - to deploy and configure the Nginx load balancer. In the inventory add the hosts to the group "elk_nginx" To change the configuration, please modify "group_vars/elastic"
